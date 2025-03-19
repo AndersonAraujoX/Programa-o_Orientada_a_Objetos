@@ -8,61 +8,61 @@ Este programa em C++ calcula a média, o desvio padrão e o histograma de um con
 
 ###  Entrada
 
-* Os dados de entrada são lidos de um arquivo cujo nome é fornecido como argumento na linha de comando. [cite: 2, 3]
-* O arquivo contém uma sequência de valores de ponto flutuante separados por espaços em branco, mudanças de linha ou tabulações. [cite: 3]
-* O número de caixas do histograma também é lido da linha de comando. [cite: 5]
+* Os dados de entrada são lidos de um arquivo cujo nome é fornecido como argumento na linha de comando.
+* O arquivo contém uma sequência de valores de ponto flutuante separados por espaços em branco, mudanças de linha ou tabulações.
+* O número de caixas do histograma também é lido da linha de comando.
 
 ###  Cálculos
 
 O programa calcula os seguintes valores:
 
-* **Número de valores (N):** O número total de valores lidos do arquivo. [cite: 4]
+* **Número de valores (N):** O número total de valores lidos do arquivo.
 * **Média:** A média dos valores, calculada pela fórmula:
     
-    $\overline{x}=\frac{1}{N}\sum_{i=0}^{N-1}x_{i}.$ [cite: 4]
+    $\overline{x}=\frac{1}{N}\sum_{i=0}^{N-1}x_{i}.$ 
     
 * **Desvio padrão amostral:** O desvio padrão amostral, calculado por:
     
-    $\sigma=\sqrt{\frac{\sum_{x=0}^{N-1}(x_{i}-\overline{x})^{2}}{N-1}}.$ [cite: 4]
+    $\sigma=\sqrt{\frac{\sum_{x=0}^{N-1}(x_{i}-\overline{x})^{2}}{N-1}}.$ 
     
-* **Histograma:** Um histograma com B caixas. [cite: 5] O histograma é computado da seguinte forma:
-    1.  O número de caixas B é lido da linha de comando. [cite: 5]
-    2.  Os valores mínimo ($x_{min}$) e máximo ($x_{max}$) são encontrados. [cite: 6]
+* **Histograma:** Um histograma com B caixas. O histograma é computado da seguinte forma:
+    1.  O número de caixas B é lido da linha de comando.
+    2.  Os valores mínimo ($x_{min}$) e máximo ($x_{max}$) são encontrados.
     3.  O tamanho das caixas ($\Delta$) é calculado:
         
-        $\Delta=\frac{x_{max}-x_{min}}{B}.$ [cite: 7]
+        $\Delta=\frac{x_{max}-x_{min}}{B}.$
         
-    4.  Um vetor de contadores inteiros de tamanho B é inicializado com zeros. [cite: 7]
+    4.  Um vetor de contadores inteiros de tamanho B é inicializado com zeros.
     5.  Para cada valor lido ($x_{i}$), a caixa correspondente ($k_{i}$) é determinada:
         
-        $k_{i}=\{\begin{matrix}\lfloor\frac{x_{i}-x_{min}}{\Delta}\rfloor,&x_{i}\ne x_{max}\\ B-1,&x_{i}=x_{max}\end{matrix}$ [cite: 8]
+        $k_{i}=\{\begin{matrix}\lfloor\frac{x_{i}-x_{min}}{\Delta}\rfloor,&x_{i}\ne x_{max}\\ B-1,&x_{i}=x_{max}\end{matrix}$ 
         
-        onde $\lfloor y\rfloor$ é o maior inteiro menor ou igual a y. [cite: 8]
-    6.  O contador da caixa $k_{i}$ é incrementado. [cite: 9]
+        onde $\lfloor y\rfloor$ é o maior inteiro menor ou igual a y.
+    6.  O contador da caixa $k_{i}$ é incrementado.
 
 ###  Saída
 
 Os resultados são escritos na saída padrão (`std::cout`) no seguinte formato:
 
-1.  O número de elementos lidos (N). [cite: 9, 10]
-2.  A média dos valores ($\overline{x}$). [cite: 9, 10]
-3.  O desvio padrão ($\sigma$). [cite: 9, 10]
+1.  O número de elementos lidos (N).
+2.  A média dos valores ($\overline{x}$).
+3.  O desvio padrão ($\sigma$).
 4.  Os dados do histograma em B linhas, com cada linha contendo:
-    * Início da caixa. [cite: 11, 12]
-    * Final da caixa. [cite: 11, 12]
-    * Contador de elementos na caixa. [cite: 11, 12]
+    * Início da caixa.
+    * Final da caixa.
+    * Contador de elementos na caixa.
 
 ###  Organização do código
 
-* O código está em um único arquivo .cpp. [cite: 13, 14, 15, 16, 17]
+* O código está em um único arquivo .cpp.
 * O código é dividido nas seguintes funções:
-    * Uma função para ler os dados do arquivo e retornar um vetor de `double`. [cite: 14, 15, 16, 17]
-    * Uma função para calcular a média e o desvio padrão, dado o vetor de dados. [cite: 14, 15, 16, 17]
-    * Uma função para calcular o histograma, dado o vetor de dados e o número de caixas. Esta função retorna o vetor de informações das caixas e o vetor de contadores. O vetor de informações das caixas contém os limites de cada caixa, e o vetor de contadores indica quantos valores caem em cada caixa. [cite: 14, 15, 16, 17, 18, 19]
-    * A função `main` lê os argumentos da linha de comando, chama as funções auxiliares e imprime os resultados. [cite: 20, 21]
-* O código começa com os protótipos das funções, seguido pela função `main` e depois pelas outras funções. [cite: 21]
-* Nomes de variáveis e funções são descritivos. [cite: 22, 23]
-* O código contém comentários para facilitar a compreensão. [cite: 22, 23]
+    * Uma função para ler os dados do arquivo e retornar um vetor de `double`. 
+    * Uma função para calcular a média e o desvio padrão, dado o vetor de dados.
+    * Uma função para calcular o histograma, dado o vetor de dados e o número de caixas. Esta função retorna o vetor de informações das caixas e o vetor de contadores. O vetor de informações das caixas contém os limites de cada caixa, e o vetor de contadores indica quantos valores caem em cada caixa.
+    * A função `main` lê os argumentos da linha de comando, chama as funções auxiliares e imprime os resultados. 
+* O código começa com os protótipos das funções, seguido pela função `main` e depois pelas outras funções.
+* Nomes de variáveis e funções são descritivos.
+* O código contém comentários para facilitar a compreensão.
 
 ##  Segundo Trabalho: Cálculo de velocidades com erros
 
